@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Gradient Project</title>
+    <link rel="Stylesheet" href="styles.css"/>
+</head>
+<body>
+    <section>
+        <h1>Generate Random CSS Linear Gradient</h1>
+        <div class="buttons">
+            <button id="mybtn1">#5C91E5</button>
+            <button id="mybtn2">#983FC6</button>
+        </div>
+        <h2>Copy your code</h2>
+        <div class="copyCode">
+            background-image:linear-gradient(to right,#5C91E5,#983FC6)
+        </div>
+    </section>
+    <footer>&copy; All rights reserved to Sagar Pillania</footer>
+    <script>
+        let btn1=document.getElementById("mybtn1");
+        let btn2=document.getElementById("mybtn2");
+        let copyDiv=document.querySelector(".copyCode");
+        let rgb1="#5C91E5";
+        let rgb2="#983FC6";
+        let myHexaValues="0123456789abcdef";
+
+        const HexValues=()=>
+        { 
+            let colorss="#";
+            for(let i=0;i<6;i++){
+                colorss=colorss+myHexaValues[Math.floor(Math.random()*16)];
+            }
+            return colorss;
+        };
+
+        const handleButton1=()=>{ 
+             rgb1=HexValues();
+            console.log(rgb1);
+            btn1.innerText=rgb1;
+            document.body.style.backgroundImage=`linear-gradient(to right,${rgb1},${rgb2})`;
+            copyDiv.innerHTML=`background-image:linear-gradient(to right,${rgb1},${rgb2})`;
+        };
+        const handleButton2=()=>{ 
+             rgb2=HexValues();
+            console.log(rgb2);
+            btn2.innerText=rgb2;
+            document.body.style.backgroundImage=`linear-gradient(to right,${rgb1},${rgb2})`;
+            copyDiv.innerHTML=`background-image:linear-gradient(to right,${rgb1},${rgb2})`;
+        };
+
+        btn1.addEventListener('click',handleButton1);
+        btn2.addEventListener('click',handleButton2);
+
+        copyDiv.addEventListener('click',()=>{
+            navigator.clipboard.writeText(copyDiv.innerText);
+            alert("Code copied..!");
+        });
+    </script>
+    
+</body>
+</html>
